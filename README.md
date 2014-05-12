@@ -107,6 +107,23 @@ Devise can manage the registration of users. Which types of features an applicat
 #### Lets Look at the migrations file.
 open db/migrate/...
 
+Notice that some fields are commented out. This is because they are _ONLY_ needed by certain devise models.
+
+In this case confirmation and lockout features of Devise are not being used. But, they may be in the future. If so, create migrations to add these attributes.
+
+#### Lets Look at the User model.
+We're using a couple of devise modules. See Devise Modules below.
+
+## Startup the app.
+	`rails s -p 3333`
+
+## Add the Devise views to your app.
+	`rails g devise:views`
+	
+This will copy the views that are typically in the Devise gem to your app. Then you can modify these views as needed.
+
+Lets look at a couple of these.
+
 
 ## Devise Modules
 * database-authenticatable  	Handles authentication of a user, as well as password encryption.
