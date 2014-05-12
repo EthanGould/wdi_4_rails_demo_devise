@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -47,6 +48,12 @@ GEM
     coffee-script-source (1.7.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -86,6 +93,7 @@ GEM
     minitest (5.3.3)
     multi_json (1.10.0)
     nio4r (1.0.0)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -184,6 +192,8 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -192,6 +202,7 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 4.0.0)
   database_cleaner
+  devise
   faker
   guard-rspec
   jbuilder (~> 2.0)
