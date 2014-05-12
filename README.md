@@ -11,6 +11,9 @@ A _very_ typical miscomprehension is that login/authentication is used to implem
 Authentication is allowing, restricting or constraining some set of behavior or operations. Typically, this is done using Roles as in Role Base Authorization Control, (RBAC). 
 
 
+### Setup RSpec 
+	`rails g rspec:install`
+
 ## Devise
 ### Add gem
 
