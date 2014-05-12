@@ -138,8 +138,13 @@ Lets look at a couple of these.
   
   
 ## Generate a Article resource
-
  `rails g scaffold Article title body:text category state`
+
+## Only allow logged in users the ability to create, update or delete users.
+In the Articles controller.
+	`  before_filter :authenticate_user!, except: [:index,:show]`
+	
+##	
 
 ## Devise Modules
 * database-authenticatable  	Handles authentication of a user, as well as password encryption.
