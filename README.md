@@ -49,8 +49,64 @@ open config/initializers/devise.rb
 ### Generate a User model 	
 	`rails generate devise User`
 	
+#### Look at the routes.rb file and run rake routes.
+You should see many new routes. And they reference controllers that are __NOT__
+in your app? Where are they?
+
+
+#### User Sessions
+
+
+A User will have a "session" with the application after they have successfully
+logged in. This session will typically last for a specific period of time in the user is inactive.
+
+The session is a hash that contains a very _limited_ set of data about a user that will be shared between the client/browser and the server. 
+
+For example, the session will have the current user's id. This is typically the primary key for that user in the users table.
+
+The session is stored in a cookie that is kept and maintained by the browser.
+
+
+Devise provides a way to handle Session resources. Running rake routes will show you what Devise provides to manage a user's session.
+
+_Show me the form to login and create a session_
+ <code> new_user_session GET    /users/sign_in(.:format)       devise/sessions#new  </code>  
+
+_Create a session for this logged in user_
+<code>  user_session POST   /users/sign_in(.:format)       devise/sessions#create</code>
+
+_Delete the session for a user_
+<code> destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy</code>
+
+So, we now have a set of routes a controller and a login form for the Session.
+
+#### User registration
+Devise can manage the registration of users. Which types of features an application can use can be configured by Devise.
+
+<table>
+<thead>
+<th>URL Helper</th><th>HTTP Method</th><th>Path</th><th>Controller#Action</th>
+</thead>
+<tbody>
+<tr><<td>cancel_user_registration</td><td>GET</td><td>/users/cancel(.:format)</td><td>devise/registrations#cancel</td></tr>
+
+<tr><td>user_registration</td><td>POST</td><td>/users(.:format)</td><td>devise/registrations#create</td></tr>
+
+<tr><td>new_user_registration</td><td>GET</td><td>/users/sign_up(.:format)</td><td>devise/registrations#new</td></tr>
+
+<tr><td>edit_user_registration</td><td>GET</td><td>/users/edit(.:format)</td><td>devise/registrations#edit</td></tr>
+
+<tr><td></td><td>PATCH</td><td>/users(.:format)</td><td>devise/registrations#update</td></tr>
+
+<tr><td></td><td>PUT</td><td>/users(.:format)</td><td>devise/registrations#update</td></tr>
+
+<tr><td></td><td>DELETE</td><td>/users(.:format)</td><td>devise/registrations#destroy</td></tr>
+</tbody>
+</table>
+
 #### Lets Look at the migrations file.
 open db/migrate/...
+
 
 ## Devise Modules
 * database-authenticatable  	Handles authentication of a user, as well as password encryption.
