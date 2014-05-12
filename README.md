@@ -135,6 +135,11 @@ Lets look at a couple of these.
       <%= link_to "Login", new_user_session_path %>
     <% end %>
   </div>
+  
+  
+## Generate a Article resource
+
+ `rails g scaffold Article title body:text category state`
 
 ## Devise Modules
 * database-authenticatable  	Handles authentication of a user, as well as password encryption.
