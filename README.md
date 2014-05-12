@@ -125,6 +125,17 @@ This will copy the views that are typically in the Devise gem to your app. Then 
 Lets look at a couple of these.
 
 
+## Add login/logout links to Layout
+ <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+
 ## Devise Modules
 * database-authenticatable  	Handles authentication of a user, as well as password encryption.
 * confirmable  	Adds the ability to require email confirmation of user accounts.
