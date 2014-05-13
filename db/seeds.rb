@@ -1,4 +1,7 @@
 User.delete_all
+Article.delete_all
+UserArticles.delete_all
+
 u1 = User.create!(email: 'joe@example.com', password: 'password')
 
 (1..3).each do |i|

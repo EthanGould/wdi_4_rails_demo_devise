@@ -30,10 +30,10 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.create(article_params)
 
     respond_to do |format|
-      if @article.save
+      if @article.valid?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -68,13 +68,17 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    if current_user
+      @article = current_user.articles.find(params[:id])
+    else
       @article = Article.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:title, :body, :category, :state)
-    end
+  end
+  
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    params.require(:article).permit(:title, :body, :category, :state)
+  end
 end
