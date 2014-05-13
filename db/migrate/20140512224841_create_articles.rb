@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.string :category
-      t.string :state
+      t.string :state, default: 'draft'
 
       t.timestamps
     end
