@@ -6,7 +6,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if current_user
+      @articles = current_user.articles
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1
